@@ -44,7 +44,8 @@ int event_check (int fd) {
 	FD_ZERO(&rfds);
 	FD_SET(fd, &rfds);
 
-	r = rb_thread_select (fd+1, &rfds, NULL, NULL, &timeout);
+	 /* r = rb_thread_select (fd+1, &rfds, NULL, NULL, &timeout); */
+	rb_thread_select (fd+1, &rfds, NULL, NULL, NULL);
 	return r;
 }
 
