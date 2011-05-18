@@ -1,3 +1,4 @@
+require 'GUI'
 require 'inotify'
 require 'find'
 
@@ -18,17 +19,17 @@ class Watcher
   # Construct the class
   def initialize(filename)
     @filename = filename
-    
     @@old_tail = tail
-    
+    @@gui=GUI.new
   end
 
   
   # Dummy function used for testing porpuses only
-  def test
+  def power_on_self_test
     puts "In the class, other file"
     puts filename
     puts @@old_tail
+    @@gui.power_on_self_test
   end
 
   
@@ -71,6 +72,9 @@ class Watcher
     puts "\nFound change:"
     puts text
     puts "End of Found change\n"
+    
+    @@gui.alert(text)
+  
   end
   
   # Waits for the file to be modify
