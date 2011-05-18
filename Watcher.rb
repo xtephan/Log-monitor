@@ -4,7 +4,18 @@ require 'find'
 
 class Watcher
   
-  attr_accessor :filename #name of the log file
+  # Initiate monitoring a snort file
+  #def init_snort(filename)
+    
+  #end
+  
+  def r5
+    return 5
+  end
+  
+  
+  
+  #attr_accessor :filename #name of the log file
   
   
   # Reads the last 20 lines of the log file
@@ -17,19 +28,19 @@ class Watcher
   end
   
   # Construct the class
-  def initialize(filename)
-    @filename = filename
-    @@old_tail = tail
-    @@gui=GUI.new
+  def initialize()
+    #@filename = filename
+    #@@old_tail = tail
+    #@@gui=GUI.new
   end
 
   
   # Dummy function used for testing porpuses only
   def power_on_self_test
     puts "In the class, other file"
-    puts filename
-    puts @@old_tail
-    @@gui.power_on_self_test
+    #puts filename
+    #puts @@old_tail
+    #@@gui.power_on_self_test
   end
 
   
@@ -100,8 +111,5 @@ class Watcher
     t.join
     
   end
-  
-  
-  
   
 end

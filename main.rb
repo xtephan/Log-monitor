@@ -1,13 +1,14 @@
 require 'Watcher'
 
-
 puts "i am main! Obey me!"
 
-aw = Watcher.new("/tmp/dummy")
-
+aw = Watcher.new
 
 aw.power_on_self_test
-aw.run
+
+aw.init_snort("/var/log/snort/alert")
+
+#aw.run
 
 #g = GUI.new
 
