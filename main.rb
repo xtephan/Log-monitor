@@ -8,7 +8,9 @@ aw.power_on_self_test
 
 aw.init_snort("/var/log/snort/alert")
 
-#aw.run
+#aw.init_iptables("/var/log/ufw.log")
+
+aw.run
 
 #g = GUI.new
 

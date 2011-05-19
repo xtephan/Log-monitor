@@ -10,8 +10,8 @@ class GUI
   end
   
   
-  def alert(thisMessage)
-    Libnotify.show :summary => "Log modified", :body => "#{thisMessage}"
+  def alert(thisTitle,thisMessage)
+    Libnotify.show :summary => "#{thisTitle}", :body => "#{thisMessage}"
     
   end
   
