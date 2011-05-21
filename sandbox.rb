@@ -1,5 +1,12 @@
-strx="[**] [1:100000160:2] COMMUNITY SIP TCP/IP message flooding directed to SIP proxy [**]"
+file = File.open("/var/log/snort/alert", "rb")
+contents = file.read.split(/\n/)
 
-puts strx.scan(/\[\*\*\] [\d\:\[\]]+ ([a-zA-Z\s\/]+) \[\*\*\]/)
+puts contents[0]
 
-puts "cacat"
+contents.each do
+  |line| 
+  if line[0,4] == "[**]" and
+      line != "[**] [1:100000160:2] COMMUNITY SIP TCP/IP message flooding directed to SIP proxy [**]"
+    puts line + "\n"
+  end
+end

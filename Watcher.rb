@@ -57,7 +57,7 @@ class Watcher
     #NOTE TO __SELF__
     #apperently, drinking beers and writing regexp
     #..does not go hand-in-hand
-    aux = strx.scan(/\[\*\*\] [\d\:\[\]]+ ([a-zA-Z\s\/]+) \[\*\*\]/)
+    aux = strx.scan(/\[\*\*\] [\d\:\[\]]+ ([a-zA-Z\s\/\(\)]+) \[\*\*\]/)
     return aux[0][0]
   end
   
@@ -66,9 +66,16 @@ class Watcher
   # Pattern of the log line:
   # ..."[Classification: Attempted Denial of Service] [Priority: 2]"
   # will return aux :0 => "classif_msg", :1 => "priority_no"
+  #Later edit: some logs do not have classification. Nill shall be returned
   def get_snort_clasif(strx)
     aux = strx.scan(/\[Classification\: ([a-zA-Z\s]+)\] \[Priority\: (\d+)\]/)
-    return aux[0]
+    
+    if aux == [] #the case in Later Edit
+      return [nil, strx.scan(/\[Priority\: (\d+)\]/)[0][0] ]
+    else
+      return aux[0]
+    end
+    
   end
     
   

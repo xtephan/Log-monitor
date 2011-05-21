@@ -1,0 +1,10 @@
+TODO:
+
+* Ubuntu applet
+* snort parsing - done
+* test with snort in real envoirement 
+* double click the alert?
+* iptables
+* parse iptables
+* choose preferences(iptables/snort)
+* write install tutorial
