@@ -27,7 +27,11 @@ class Watcher
   # Reads the last lines of a log file
   # ...and returns it as an array
   def tail(file,nr,sep)
+  	begin
     return %x[tail -n #{nr} #{file}].split(/#{sep}/)
+   rescue e
+   	abort("can't open snort log file") 
+   end
   end
   
   #Tail costumisez for snort

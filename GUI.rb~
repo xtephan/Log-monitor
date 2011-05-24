@@ -7,7 +7,7 @@ end
 begin 
 	require 'libnotify'
 rescue LoadError
-	abort("libnotify not found! Please install it!")
+	puts "libnotify not found! Please install it!"
 end
 
 
