@@ -1,3 +1,9 @@
+[ WARNING! ] 
+For the moment, the program is miserably
+   failing to perform in a __real__ enviroment
+TIMELINE: hope in a couple of day the bug it will be fixed 
+[END WARNING]
+
 Install and Configure Snort IDS
 $ apt-get install snort
 
