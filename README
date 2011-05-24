@@ -1,35 +1,25 @@
+Install and Configure Snort IDS
+$ apt-get install snort
+
+Install Ruby and RubyGems
+$ apt-get install ruby rubygems
+
+Install rubyGTK and libnotify
+$ apt-get install libinotify-ruby libgtk2-ruby libnotify-dev
+$ gem install libnotify
+
+Give user access to snort log folder
+(not the best sollution, needs more searching)
+$ chmod -R 777 /var/log/snort
+
+Clone the project 
+$ git clone https://github.com/xtephan/Log-monitor.git
+
+
+*** 
+Tested under Debian 6.0 clean install with latest updates
+Date: 24 May 2011
+***
 
 Folder unittesting contains only unittest
 
-Install libnotify
-http://mikewilliamson.wordpress.com/2010/04/01/fun-with-ubuntus-notifications-in-ruby/
-
-[**] [1:2049:6] SQL ping attempt [**]
-[Classification: Misc activity] [Priority: 2]
-08/03-12:38:47.049614 192.168.48.68:1575 -> 255.255.255.255:1434
-UDP TTL:128 TOS:0x0 ID:27143 IpLen:20 DgmLen:29
-Len: 1
-[Xref => http://cgi.nessus.org/plugins/dump.php3?id=10674]
-
-
-[**] [122:1:0] (portscan) TCP Portscan [**]
-[Priority: 3] 
-05/19-09:54:55.935668 10.128.17.95 -> 10.128.17.134
-PROTO:255 TTL:0 TOS:0x0 ID:0 IpLen:20 DgmLen:160 DF
-
-
-[**] [1:1418:11] SNMP request tcp [**]
-[Classification: Attempted Information Leak] [Priority: 2] 
-05/19-09:55:03.440213 10.128.17.95:41134 -> 10.128.17.134:161
-TCP TTL:45 TOS:0x0 ID:36796 IpLen:20 DgmLen:44
-******S* Seq: 0x718B17F3  Ack: 0x0  Win: 0x800  TcpLen: 24
-TCP Options (1) => MSS: 1460 
-[Xref => http://cve.mitre.org/cgi-bin/cvename.cgi?name=2002-0013][Xref => http://cve.mitre.org/cgi-bin/cvename.cgi?name=2002-0012][Xref => http://www.securityfocus.com/bid/4132][Xref => http://www.securityfocus.com/bid/4089][Xref => http://www.securityfocus.com/bid/4088]
-
-[**] [1:1421:11] SNMP AgentX/tcp request [**]
-[Classification: Attempted Information Leak] [Priority: 2] 
-05/19-09:55:21.470302 10.128.17.95:41134 -> 10.128.17.134:705
-TCP TTL:52 TOS:0x0 ID:53272 IpLen:20 DgmLen:44
-******S* Seq: 0x718B17F3  Ack: 0x0  Win: 0x400  TcpLen: 24
-TCP Options (1) => MSS: 1460 
-[Xref => http://cve.mitre.org/cgi-bin/cvename.cgi?name=2002-0013][Xref => http://cve.mitre.org/cgi-bin/cvename.cgi?name=2002-0012][Xref => http://www.securityfocus.com/bid/4132][Xref => http://www.securityfocus.com/bid/4089][Xref => http://www.securityfocus.com/bid/4088]

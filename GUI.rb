@@ -1,5 +1,15 @@
-require 'rubygems'
-require 'libnotify'
+begin 
+	require 'rubygems'
+rescue LoadError
+	abort("rubygems not found! Please install it!")
+end
+
+begin 
+	require 'libnotify'
+rescue LoadError
+	abort("libnotify not found! Please install it!")
+end
+
 
 class GUI
 

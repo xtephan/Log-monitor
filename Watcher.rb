@@ -1,6 +1,13 @@
 require 'GUI'
-require 'inotify'
 require 'find'
+
+begin
+	require 'inotify'
+rescue LoadError
+	abort("inotify not found! Please install it!")
+end
+
+
 
 class Watcher
   
