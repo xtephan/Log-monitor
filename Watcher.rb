@@ -64,7 +64,7 @@ class Watcher
     #NOTE TO __SELF__
     #apperently, drinking beers and writing regexp
     #..does not go hand-in-hand
-    aux = strx.scan(/\[\*\*\] [\d\:\[\]]+ ([a-zA-Z\s\/\(\)]+) \[\*\*\]/)
+    aux = strx.scan(/\[\*\*\] [\d\:\[\]]+ ([a-zA-Z\s\/\(\)\d\>\_\:\-\.]+) \[\*\*\]/)
     return aux[0][0]
   end
   
@@ -130,7 +130,7 @@ class Watcher
   
   # Waits for the file to be modify
   # ...and raises and event
-  # ...based on Linux Inofity library
+  # ...based on Linux Kernel Inofity library
   def run
     
     i = Inotify.new

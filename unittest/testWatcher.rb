@@ -31,7 +31,18 @@ class WatcherTesting < Test::Unit::TestCase
     assert_equal("ICMP Destination Unreachable Communication with Destination Host is Administratively Prohibited", @wc.get_snort_title("[**] [1:486:4] ICMP Destination Unreachable Communication with Destination Host is Administratively Prohibited [**]") )
     assert_equal("ICMP Destination Unreachable Communication Administratively Prohibited", @wc.get_snort_title("[**] [1:485:4] ICMP Destination Unreachable Communication Administratively Prohibited [**]") )
     
-
+    assert_equal("DDOS mstream client to handler", @wc.get_snort_title("[**] [1:249:8] DDOS mstream client to handler [**]") )
+    assert_equal("SNMP trap tcp", @wc.get_snort_title("[**] [1:1420:11] SNMP trap tcp [**]") )
+    assert_equal("ICMP Destination Unreachable Port Unreachable", @wc.get_snort_title("[**] [1:402:7] ICMP Destination Unreachable Port Unreachable [**]") )
+    assert_equal("SNMP trap udp", @wc.get_snort_title("[**] [1:1419:9] SNMP trap udp [**]") )
+    assert_equal("ICMP Packet", @wc.get_snort_title("[**] [1:477:3] ICMP Packet [**]") )
+    assert_equal("(snort_decoder): Tcp Window Scale Option found with length > 14", @wc.get_snort_title("[**] [116:59:1] (snort_decoder): Tcp Window Scale Option found with length > 14 [**]") )
+    assert_equal("SCAN nmap XMAS", @wc.get_snort_title("[**] [1:1228:7] SCAN nmap XMAS [**]") )
+    assert_equal("RPC portmap listing TCP 111", @wc.get_snort_title("[**] [1:598:12] RPC portmap listing TCP 111 [**]") )
+    assert_equal("WEB-MISC robots.txt access", @wc.get_snort_title("[**] [1:1852:3] WEB-MISC robots.txt access [**]") )
+    assert_equal("(spp_ssh) Protocol mismatch", @wc.get_snort_title("[**] [128:4:1] (spp_ssh) Protocol mismatch [**]") )
+    
+    
   end
   
   
@@ -44,8 +55,10 @@ class WatcherTesting < Test::Unit::TestCase
     assert_equal([nil,"3"], @wc.get_snort_clasif("[Priority: 3]"))
     assert_equal(["Misc activity","2"], @wc.get_snort_clasif("[Classification: Misc activity] [Priority: 2]"))
     assert_equal(["Attempted Information Leak","2"], @wc.get_snort_clasif("[Classification: Attempted Information Leak] [Priority: 2]"))
-    assert_equal(["Misc activity","2"], @wc.get_snort_clasif("[Classification: Misc activity] [Priority: 2]"))
-    
+    assert_equal(["Decode of an RPC Query","2"], @wc.get_snort_clasif("[Classification: Decode of an RPC Query] [Priority: 2]"))
+    assert_equal(["access to a potentially vulnerable web application","2"], @wc.get_snort_clasif("[Classification: access to a potentially vulnerable web application] [Priority: 2]"))
+    assert_equal([nil,"0"], @wc.get_snort_clasif("[Priority: 0]"))    
+
   end
   
   
