@@ -13,9 +13,11 @@ class Watcher
   
   # Initiate monitoring a snort file
   def init_snort(filename)
+    
     @@snort_file=filename
     @@snort_ot = tail_snort(3)
     puts @@snort_ot
+  
   end
   
   #Just dummy
