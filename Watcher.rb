@@ -64,7 +64,7 @@ class Watcher
     #NOTE TO __SELF__
     #apperently, drinking beers and writing regexp
     #..does not go hand-in-hand
-    aux = strx.scan(/\[\*\*\] [\d\:\[\]]+ ([a-zA-Z\s\/\(\)\d\>\_\:\-\.]+) \[\*\*\]/)
+    aux = strx.scan(/\[\*\*\] [\d\:\[\]]+ ([a-zA-Z\s\/\(\)\d\>\_\:\-\.\*]+) \[\*\*\]/)
     return aux[0][0]
   end
   

@@ -42,7 +42,11 @@ class WatcherTesting < Test::Unit::TestCase
     assert_equal("WEB-MISC robots.txt access", @wc.get_snort_title("[**] [1:1852:3] WEB-MISC robots.txt access [**]") )
     assert_equal("(spp_ssh) Protocol mismatch", @wc.get_snort_title("[**] [128:4:1] (spp_ssh) Protocol mismatch [**]") )
     
-    
+    assert_equal("ICMP PING *NIX", @wc.get_snort_title("[**] [1:366:7] ICMP PING *NIX [**]") )
+    assert_equal("ICMP PING", @wc.get_snort_title("[**] [1:384:5] ICMP PING [**]") )
+    assert_equal("ICMP Echo Reply", @wc.get_snort_title("[**] [1:408:5] ICMP Echo Reply [**]") )
+    assert_equal("ICMP PING BSDtype", @wc.get_snort_title("[**] [1:368:6] ICMP PING BSDtype [**] [**]") )
+
   end
   
   
@@ -60,6 +64,5 @@ class WatcherTesting < Test::Unit::TestCase
     assert_equal([nil,"0"], @wc.get_snort_clasif("[Priority: 0]"))    
 
   end
-  
   
 end

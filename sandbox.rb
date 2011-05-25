@@ -1,15 +1,24 @@
-file = File.open("/home/xtephan/alert", "rb")
-contents = file.read.split(/\n/)
+class File
+  
+  def tail(n)
+    buffer = 1024
+    idx = (size - buffer).abs
+    chunks = []
+    lines = 0
 
-puts contents[0]
+    begin
+      seek(idx)
+      chunk = read(buffer)
+      lines += chunk.count("\n")
+      chunks.unshift chunk
+      idx -= buffer
+    end while lines < n && pos != 0
 
-contents.each do
-  |line| 
-  if line[0,10] == "[Priority:" and
-      line != "[**] [1:100000160:2] COMMUNITY SIP TCP/IP message flooding directed to SIP proxy [**]"
-    puts line + "\n"
+    chunks.join.lines.reverse_each.take(n).reverse.join
   end
+  
 end
 
+pula = File.new('README','rb')
 
-
+pula.tail(4)
