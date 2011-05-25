@@ -1,24 +1,10 @@
-class File
+f= File.open("/home/xtephan/f1","r")
+g= File.open("/home/xtephan/f2","r")
+
+#f.each { |line| puts line }
+
+f.seek(0,IO::SEEK_END)
+puts f.pos
   
-  def tail(n)
-    buffer = 1024
-    idx = (size - buffer).abs
-    chunks = []
-    lines = 0
-
-    begin
-      seek(idx)
-      chunk = read(buffer)
-      lines += chunk.count("\n")
-      chunks.unshift chunk
-      idx -= buffer
-    end while lines < n && pos != 0
-
-    chunks.join.lines.reverse_each.take(n).reverse.join
-  end
-  
-end
-
-pula = File.new('README','rb')
-
-pula.tail(4)
+g.seek(27,IO::SEEK_CUR)    
+g.each { |line| puts line }
