@@ -1,8 +1,20 @@
+[ WARNING! ]
+Due to a concept <strike>failure</strike> bug,
+	all the classes have been redesigned.
+Errors are expected at this point.
+
+NOTE to __self__: should have found the 
+	experimantal branch earlier :-)	 
+TIMELINE: until friday should be fixed
+[END WARNING]
+
+
 [ WARNING! ] 
 For the moment, the program is miserably
    failing to perform in a __real__ enviroment
 TIMELINE: hope in a couple of day the bug it will be fixed 
 [END WARNING]
+
 
 Install and Configure Snort IDS
 $ apt-get install snort
@@ -21,6 +33,11 @@ $ chmod -R 777 /var/log/snort
 Clone the project 
 $ git clone https://github.com/xtephan/Log-monitor.git
 
+Run the unittests:
+$ ruby unittest/ts_allTheTests.rb
+
+And run the program:
+$ ruby main.rb
 
 *** 
 Tested under Debian 6.0 clean install with latest updates
