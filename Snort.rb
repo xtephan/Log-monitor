@@ -2,9 +2,8 @@ require 'Log'
 
 class Snort<Log
   
-  
-  def test2
-    puts "Snort"
+  def get_filepath
+    return @@filepath
   end
   
 end

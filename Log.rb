@@ -1,7 +1,10 @@
 class Log
   
-  def test
-    puts "Log"
+  def set_file(filename)
+    @@filepath=filename
   end
+  
+  
+  
   
 end

@@ -1,5 +1,6 @@
 require 'GUI'
 require 'find'
+require 'Snort'
 
 begin
 	require 'inotify'
@@ -14,10 +15,12 @@ class Watcher
   # Initiate monitoring a snort file
   def init_snort(filename)
     
-    @@snort_file=filename
-    @@snort_ot = tail_snort(3)
-    puts @@snort_ot
-  
+    @@snort=Snort.new
+    @@snort.set_file(filename)
+    @@snort.test2()
+    #@snort.filepath
+    #need tail?
+       
   end
   
   #Just dummy
