@@ -3,4 +3,7 @@
 	* tested on a clean Debian
 	* serious bug discovered
 
+2011-05-25
 
+	* improved RegExp, with tests
+	* experimental: new class design
