@@ -8,6 +8,9 @@ class Log
     @@filepath=filename
   end
   
+  def set_alert_gui(tmp)
+    @@gui=tmp
+  end
   
   # find the possition of the EOF
   # ... it will be used to compare later 
@@ -26,6 +29,8 @@ class Log
   end
   
   
+  #detects if a new entries has been added 
+  #...to the log file
   def new_entry()
     
     @@current_eof = get_current_eof()
@@ -33,7 +38,7 @@ class Log
     return false if @@last_eof == @@current_eof
     
     # this shall be deleted from here!!
-    @@last_eof=@@current_eof
+    #@@last_eof=@@current_eof
     return true
   
   end
@@ -45,8 +50,20 @@ class Log
     
   end
   
-#-----------------------------------------------------------------  
+  def get_difference(delimiter)
+    
+    @@file.seek(@@last_eof,IO::SEEK_SET)
+    
+    @@file.each { |line| puts line }
+      
+    @@last_eof=@@current_eof
+    
+  end
   
+  
+#-----------------------------------------------------------------  
+=begin
+   
   # Reads the last lines of a log file
   # ...and returns it as an array
   def tail(file,nr,sep)
@@ -59,13 +76,6 @@ class Log
   end
   
   
-  
-  def set_alert_gui(tmp)
-    @@gui=tmp
-  end
-  
-  
-  
   def display(title,text)
     puts "\nFound change:"
     puts text
@@ -73,5 +83,6 @@ class Log
     
     @@gui.alert(title,text)
   end
-  
+=end
+ 
 end

@@ -6,7 +6,19 @@ class Snort<Log
     return @@filepath
   end
   
+  
+  def log_moddified
+    
+    puts "new log"
+    
+    tmp=get_difference("\n\n")
+    
+    
+  end
+  
 #-----------------------------------------------  
+# everything behoind this point is comment
+=begin
   def first_tail()
     @@old_tail=tail_snort(3)
   end
@@ -44,35 +56,6 @@ class Snort<Log
     end
     
   end
-  
-  
-  def log_moddified
-      new_tail = tail_snort(3)
-      
-      # For unkown (yet) reasons
-      # ...the event is called twice sometimes
-      # ...this is an work-around
-      if @@old_tail == new_tail
-        return
-      end
-      
-      tmp = get_difference(new_tail, @@old_tail)
-  
-      tmp2=tmp[0].split(/\n/)
-      
-      alert_msg=get_snort_title(tmp2[0])
-      
-      alert_clasif=get_snort_clasif(tmp2[1])
-      
-      #puts "msg"
-      #puts alert_msg
-      
-      display_msg = "+#{alert_msg}\n+#{alert_clasif[0]}\n+Priority: #{alert_msg[1]}"
-      
-      display("Snort Alert", display_msg)
-      
-      @@old_tail = new_tail
-      
-    end
-  
+
+=end
 end

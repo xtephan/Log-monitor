@@ -48,9 +48,9 @@ class Watcher
     while true do
       
       if @@snort.new_entry()
-        puts "new log"
-      else 
-        puts "same shit, different loop"
+        @@snort.log_moddified()
+      else
+        puts "same shit, different log"
       end
       
       sleep 2
