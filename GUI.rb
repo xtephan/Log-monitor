@@ -1,3 +1,5 @@
+require 'date'
+
 begin 
 	require 'rubygems'
 rescue LoadError
