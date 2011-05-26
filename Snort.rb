@@ -29,14 +29,14 @@ class Snort<Log
   # function trigered when the log file is modified
   def log_moddified
     
-    if a.size > 10
+    tmp=get_difference()
+
+    if tmp.size > 10
       display_cli("Snort Alert","Multiple snort log entries. Please see the log file")
       display_gui("Snort Alert","Multiple snort log entries. Please see the log file")
       return 
     end
     
-    tmp=get_difference()
-
     tmp.each { |entry| 
       analysis( entry)
     }
