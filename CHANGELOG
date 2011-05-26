@@ -1,9 +1,16 @@
+2011-05-26
+
+	* merged to stable: new class design
+	* inotify has been replaced
+	* merged to stable: new way of finding the new entries in the log file
+
+
+2011-05-25
+
+        * improved RegExp, with tests
+        * experimental: new class design
+
 2011-05-24
 
 	* tested on a clean Debian
 	* serious bug discovered
-
-2011-05-25
-
-	* improved RegExp, with tests
-	* experimental: new class design

@@ -6,16 +6,66 @@ class Snort<Log
     return @@filepath
   end
   
-  def first_tail()
-    @@old_tail=tail_snort(3)
+  
+  # Analyse a log entry
+  # ..parse it and alert
+  def analysis( entry )
+    
+    lines=entry.split(/\n/)
+    
+    begin
+      
+      alert_msg=get_snort_title(lines[0])
+      alert_clasif=get_snort_clasif(lines[1])
+      display_msg = "+#{alert_msg}\n+#{alert_clasif[0]}\n+Priority: #{alert_msg[1]}"
+      display_cli("Snort Alert",display_msg)
+      display_gui("Snort Alert",display_msg)
+  
+    rescue Exception=>e
+      error("Can't parse snort entry: \n" + entry)
+    end 
+    
+    
   end
   
-  #Tail costumisez for snort
-  def tail_snort(nr_entr)
-    return tail(@@snort_file,nr_entr*7,"\n\n")
+  
+  # function trigered when the log file is modified
+  def log_moddified
+    
+    tmp=get_difference()
+
+    tmp.each { |entry| 
+      analysis( entry)
+    }
+    
   end
   
+  # Returns an array constisting of
+  # ... the new entries in the log file
+  def get_difference()
+    
+    aux=[]
+    inc=0 
+    
+    @@file.seek(@@last_eof,IO::SEEK_SET)
+    
+    @@file.each { |line| 
+
+      if line == "\n"
+        inc+=1
+      else
+        aux[inc] = ( aux[inc]==nil ? line : aux[inc]+=line )
+      end
+    
+    }
+      
+    @@last_eof=@@current_eof
+    
+    return aux
+    
+  end
   
+
   # Parses a snort log  using regex
   # Pattern of the log line:
   # ..."[**] [1:100000160:2] message_of_the_title [**]"
@@ -43,35 +93,5 @@ class Snort<Log
     end
     
   end
-  
-  
-  def log_moddified
-      new_tail = tail_snort(3)
-      
-      # For unkown (yet) reasons
-      # ...the event is called twice sometimes
-      # ...this is an work-around
-      if @@old_tail == new_tail
-        return
-      end
-      
-      tmp = get_difference(new_tail, @@old_tail)
-  
-      tmp2=tmp[0].split(/\n/)
-      
-      alert_msg=get_snort_title(tmp2[0])
-      
-      alert_clasif=get_snort_clasif(tmp2[1])
-      
-      #puts "msg"
-      #puts alert_msg
-      
-      display_msg = "+#{alert_msg}\n+#{alert_clasif[0]}\n+Priority: #{alert_msg[1]}"
-      
-      display("Snort Alert", display_msg)
-      
-      @@old_tail = new_tail
-      
-    end
-  
+
 end
