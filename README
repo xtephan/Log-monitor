@@ -1,10 +1,3 @@
-[ WARNING! ] 
-For the moment, the program is miserably
-   failing to perform in a __real__ enviroment
-TIMELINE: hope in a couple of day the bug it will be fixed 
-[END WARNING]
-
-
 Install and Configure Snort IDS
 $ apt-get install snort
 
@@ -16,7 +9,7 @@ $ apt-get install libinotify-ruby libgtk2-ruby libnotify-dev
 $ gem install libnotify
 
 Give user access to snort log folder
-(not the best sollution, needs more searching)
+(not the best solution, needs more researching)
 $ chmod -R 777 /var/log/snort
 
 Clone the project 

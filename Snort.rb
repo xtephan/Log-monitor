@@ -13,12 +13,14 @@ class Snort<Log
     
     lines=entry.split(/\n/)
     
-    alert_msg=get_snort_title(lines[0])
-    alert_clasif=get_snort_clasif(lines[1])
+    alert_msg    = get_snort_title(     lines[0] )
+    alert_clasif = get_snort_clasif(    lines[1] )
+    alert_scip   = get_snort_source_ip( lines[2] )
       
-    display_msg = "+#{alert_msg}\n"
-    display_msg+= "+#{alert_clasif[0]}\n" if alert_clasif[0]
-    display_msg+= "+Priority: #{alert_clasif[1]}"
+    display_msg = "+ #{alert_msg}\n"
+    display_msg+= "+ #{alert_clasif[0]}\n" if alert_clasif[0]
+    display_msg+= "+ Priority: #{alert_clasif[1]}\n"
+    display_msg+= "+ Source: #{alert_scip}\n"
       
     display_cli("Snort Alert",display_msg)
     display_gui("Snort Alert",display_msg)
@@ -96,6 +98,18 @@ class Snort<Log
       return aux[0]
     end
     
+  end
+  
+  
+  # Parses a snort log  using regex
+  # Pattern of the log line:
+  # ..."05/24-05:18:48.990878 source_ip+port -> dest_ip+port"
+  def get_snort_source_ip(strx)
+    #NOTE TO __SELF__
+    #apperently, drinking beers and writing regexp
+    #..does not go hand-in-hand
+    aux = strx.scan(/[\d\/\-\:\.]+ ([\d\.\:]+) \-\> [\d\.\:]+/)
+    return aux[0][0]
   end
 
 end

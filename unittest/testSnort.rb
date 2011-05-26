@@ -65,6 +65,11 @@ class SnortTesting < Test::Unit::TestCase
 
   end
   
+  def test_snort_ip
+    assert_equal("192.168.1.27:60449", @sn.get_snort_source_ip("05/24-05:18:48.990878 192.168.1.27:60449 -> 192.168.1.22:705") )
+    assert_equal("192.168.1.22", @sn.get_snort_source_ip("05/24-05:26:54.499008 192.168.1.22 -> 192.168.1.27") )
+  end
+  
   
   
 end

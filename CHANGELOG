@@ -4,6 +4,7 @@
 	* inotify has been replaced
 	* merged to stable: new way of finding the new entries in the log file
 	* fixed various bugs: no classif, priority
+	
 
 
 2011-05-25
