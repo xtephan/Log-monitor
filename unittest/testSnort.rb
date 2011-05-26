@@ -54,14 +54,14 @@ class SnortTesting < Test::Unit::TestCase
   # .. i can write regex
   # ..muhahahah.. The end is near!!
   def test_snort_classif
-    assert_equal(["Attempted Denial of Service","2"], @sn.get_snort_clasif("[Classification: Attempted Denial of Service] [Priority: 2]"))
-    assert_equal(["Attempted Denial of Service","25"], @sn.get_snort_clasif("[Classification: Attempted Denial of Service] [Priority: 25]"))
-    assert_equal([nil,"3"], @sn.get_snort_clasif("[Priority: 3]"))
-    assert_equal(["Misc activity","2"], @sn.get_snort_clasif("[Classification: Misc activity] [Priority: 2]"))
-    assert_equal(["Attempted Information Leak","2"], @sn.get_snort_clasif("[Classification: Attempted Information Leak] [Priority: 2]"))
-    assert_equal(["Decode of an RPC Query","2"], @sn.get_snort_clasif("[Classification: Decode of an RPC Query] [Priority: 2]"))
-    assert_equal(["access to a potentially vulnerable web application","2"], @sn.get_snort_clasif("[Classification: access to a potentially vulnerable web application] [Priority: 2]"))
-    assert_equal([nil,"0"], @sn.get_snort_clasif("[Priority: 0]"))    
+    assert_equal(["Attempted Denial of Service","2"], @sn.get_snort_clasif("[Classification: Attempted Denial of Service] [Priority: 2] "))
+    assert_equal(["Attempted Denial of Service","25"], @sn.get_snort_clasif("[Classification: Attempted Denial of Service] [Priority: 25] "))
+    assert_equal([nil,"3"], @sn.get_snort_clasif("[Priority: 3] "))
+    assert_equal(["Misc activity","2"], @sn.get_snort_clasif("[Classification: Misc activity] [Priority: 2] "))
+    assert_equal(["Attempted Information Leak","2"], @sn.get_snort_clasif("[Classification: Attempted Information Leak] [Priority: 2] "))
+    assert_equal(["Decode of an RPC Query","2"], @sn.get_snort_clasif("[Classification: Decode of an RPC Query] [Priority: 2] "))
+    assert_equal(["access to a potentially vulnerable web application","2"], @sn.get_snort_clasif("[Classification: access to a potentially vulnerable web application] [Priority: 2] "))
+    assert_equal([nil,"0"], @sn.get_snort_clasif("[Priority: 0] "))    
 
   end
   
