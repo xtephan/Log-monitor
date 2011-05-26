@@ -6,6 +6,7 @@ class Snort<Log
     return @@filepath
   end
   
+#-----------------------------------------------  
   def first_tail()
     @@old_tail=tail_snort(3)
   end

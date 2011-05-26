@@ -2,12 +2,6 @@ require 'GUI'
 require 'find'
 require 'Snort'
 
-begin
-	require 'inotify'
-rescue LoadError
-	abort("inotify not found! Please install it!")
-end
-
 
 class Watcher
   
@@ -17,9 +11,11 @@ class Watcher
   def init_snort(filename)
     
     @@snort=Snort.new
-    @@snort.set_file(filename)
-    @@snort.first_tail()
-    @@snort.set_alert_gui(@@gui)
+    
+    @@snort.set_file(      filename )
+    @@snort.set_alert_gui( @@gui    )
+    @@snort.initial_eof()
+    
   end
   
   #Dummy. Testing porpuses only
@@ -41,29 +37,26 @@ class Watcher
   end
 
   
-   
-  # Waits for the file to be modify
-  # ...and raises and event
-  # ...based on Linux Kernel Inofity library
+  # Replacement for Inotify
+  # ...based on comparation the current
+  #...File EOF with the last known EOF 
   def run
     
-    i = Inotify.new
-    
-    #Thread each event
-    t = Thread.new do
-      i.each_event do |ev|
-        #p ev
-        #p ev.name
-        #p ev.mask
-        @@snort.log_moddified
-        #puts "ev"
+    #Infinite loop.
+    #..will be changed as soon as a pause botton 
+    #...is implemented
+    while true do
+      
+      if @@snort.new_entry()
+        puts "new log"
+      else 
+        puts "same shit, different loop"
       end
+      
+      sleep 2
     end
     
-    i.add_watch(@@snort.get_filepath(), Inotify::MODIFY)
-    
-    t.join
-    
   end
-  
+
+
 end
