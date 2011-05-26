@@ -50,7 +50,7 @@ class Watcher
       if @@snort.new_entry()
         @@snort.log_moddified()
       else
-        puts "same shit, different log"
+        #puts "same shit, different log"
       end
       
       sleep 2

@@ -6,29 +6,48 @@ class Snort<Log
     return @@filepath
   end
   
-  
+  # function trigered when the log file is modified
   def log_moddified
     
     puts "new log"
     
-    tmp=get_difference("\n\n")
+    tmp=get_difference()
+
+    tmp.each { |entry| 
+      puts "xxx" + entry
+    }
     
+  end
+  
+  # Returns an array constisting of
+  # ... the new entries in the log file
+  def get_difference()
+    
+    aux=[]
+    inc=0 
+    
+    @@file.seek(@@last_eof,IO::SEEK_SET)
+    
+    @@file.each { |line| 
+
+      if line == "\n"
+        inc+=1
+      else
+        aux[inc] = ( aux[inc]==nil ? line : aux[inc]+=line )
+      end
+    
+    }
+      
+    @@last_eof=@@current_eof
+    
+    return aux
     
   end
   
 #-----------------------------------------------  
 # everything behoind this point is comment
 =begin
-  def first_tail()
-    @@old_tail=tail_snort(3)
-  end
-  
-  #Tail costumisez for snort
-  def tail_snort(nr_entr)
-    return tail(@@snort_file,nr_entr*7,"\n\n")
-  end
-  
-  
+
   # Parses a snort log  using regex
   # Pattern of the log line:
   # ..."[**] [1:100000160:2] message_of_the_title [**]"

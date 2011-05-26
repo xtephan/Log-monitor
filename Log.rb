@@ -36,9 +36,6 @@ class Log
     @@current_eof = get_current_eof()
     
     return false if @@last_eof == @@current_eof
-    
-    # this shall be deleted from here!!
-    #@@last_eof=@@current_eof
     return true
   
   end
@@ -50,32 +47,10 @@ class Log
     
   end
   
-  def get_difference(delimiter)
-    
-    @@file.seek(@@last_eof,IO::SEEK_SET)
-    
-    @@file.each { |line| puts line }
-      
-    @@last_eof=@@current_eof
-    
-  end
-  
   
 #-----------------------------------------------------------------  
 =begin
-   
-  # Reads the last lines of a log file
-  # ...and returns it as an array
-  def tail(file,nr,sep)
-    return %x[tail -n #{nr} #{file}].split(/#{sep}/)
-  end
-  
-  # Find out what is new in the log file
-  def get_difference(tail1, tail2)
-      return tail1-tail2
-  end
-  
-  
+ 
   def display(title,text)
     puts "\nFound change:"
     puts text
