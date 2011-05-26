@@ -6,15 +6,36 @@ class Snort<Log
     return @@filepath
   end
   
+  
+  # Analyse a log entry
+  # ..parse it and alert
+  def analysis( entry )
+    
+    lines=entry.split(/\n/)
+    
+    begin
+      
+      alert_msg=get_snort_title(lines[0])
+      alert_clasif=get_snort_clasif(lines[1])
+      display_msg = "+#{alert_msg}\n+#{alert_clasif[0]}\n+Priority: #{alert_msg[1]}"
+      display_cli("Snort Alert",display_msg)
+      display_gui("Snort Alert",display_msg)
+  
+    rescue Exception=>e
+      error("Can't parse snort entry: \n" + entry)
+    end 
+    
+    
+  end
+  
+  
   # function trigered when the log file is modified
   def log_moddified
-    
-    puts "new log"
     
     tmp=get_difference()
 
     tmp.each { |entry| 
-      puts "xxx" + entry
+      analysis( entry)
     }
     
   end
@@ -44,9 +65,6 @@ class Snort<Log
     
   end
   
-#-----------------------------------------------  
-# everything behoind this point is comment
-=begin
 
   # Parses a snort log  using regex
   # Pattern of the log line:
@@ -76,5 +94,4 @@ class Snort<Log
     
   end
 
-=end
 end

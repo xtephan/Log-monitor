@@ -40,6 +40,7 @@ class Log
   
   end
   
+  # returns the possition of the EOF
   def get_current_eof()
     
     @@file.seek(0,IO::SEEK_END);
@@ -47,17 +48,21 @@ class Log
     
   end
   
-  
-#-----------------------------------------------------------------  
-=begin
+  # dump the errors
+  def error(msg)
+    puts "[!!] " + msg
+  end
  
-  def display(title,text)
+  # alert on comand line
+  def display_cli(title,text)
     puts "\nFound change:"
     puts text
     puts "End of Found change\n"
-    
+  end
+  
+  # alert on gui
+  def display_gui(title,text)
     @@gui.alert(title,text)
   end
-=end
  
 end
