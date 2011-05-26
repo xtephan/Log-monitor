@@ -11,17 +11,14 @@ class Snort<Log
   # ..parse it and alert
   def analysis( entry )
     
-    puts "ee" + entry + "ee"
-    
     lines=entry.split(/\n/)
     
     alert_msg=get_snort_title(lines[0])
-    #alert_clasif=get_snort_clasif(lines[1])
+    alert_clasif=get_snort_clasif(lines[1])
       
-    puts "aa" + alert_msg + "aa"
     display_msg = "+#{alert_msg}\n"
-      #display_msg+= "+#{alert_clasif[0]}\n" if alert_clasif[0]
-      #display_msg+= "+Priority: #{alert_msg[1]}"
+    display_msg+= "+#{alert_clasif[0]}\n" if alert_clasif[0]
+    display_msg+= "+Priority: #{alert_clasif[1]}"
       
     display_cli("Snort Alert",display_msg)
     display_gui("Snort Alert",display_msg)
@@ -85,12 +82,10 @@ class Snort<Log
   #Later edit: some logs do not have classification. Nill shall be returned
   def get_snort_clasif(strx)
     
-    aux = strx.scan(/\[Classification\: ([a-zA-Z\s]+)\] \[Priority\: (\d+)\]/)
-    
-    puts "aa" + aux[0] + "aa"
+    aux = strx.scan(/\[Classification\: ([a-zA-Z\s]+)\] \[Priority\: (\d+)\] /)
     
     if aux == [] #the case in Later Edit
-      return [nil, strx.scan(/\[Priority\: (\d+)\]/)[0][0] ]
+      return [nil, strx.scan(/\[Priority\: (\d+)\] /)[0][0] ]
     else
       return aux[0]
     end
