@@ -1,14 +1,3 @@
-[ WARNING! ]
-Due to a concept <strike>failure</strike> bug,
-	all the classes have been redesigned.
-Errors are expected at this point.
-
-NOTE to __self__: should have found the 
-	experimantal branch earlier :-)	 
-TIMELINE: until friday should be fixed
-[END WARNING]
-
-
 [ WARNING! ] 
 For the moment, the program is miserably
    failing to perform in a __real__ enviroment
