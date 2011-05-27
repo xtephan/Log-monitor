@@ -1,3 +1,9 @@
+[WARNING]
+The develop under Ruby has stopped.
+An experimental branch was created in which the program
+will be ported on Python 
+[END of WARNING]
+
 Install and Configure Snort IDS
 $ apt-get install snort
 
