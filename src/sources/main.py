@@ -6,6 +6,13 @@ Created on May 30, 2011
 from Watcher import Watcher
 
 if __name__ == '__main__':
+    
     print "Hello World"
+    
     wc = Watcher()
-    print wc.r5()
+
+    wc.init_snort("/home/xtephan/alert")
+    #wc.init_snort("/var/log/snort/alert")
+  
+    
+    wc.run()

@@ -1,1 +1,5 @@
 logmonitor ported to python
+
+Install python notify
+$ sudo apt-get install python-notify
+
