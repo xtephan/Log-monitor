@@ -6,7 +6,8 @@ Created on May 30, 2011
 
 class Watcher():
     '''
-    classdocs
+    Class that handles monitoring on all
+    the log files
     '''
 
 
